@@ -7,26 +7,22 @@ var tallyVal = null; // This is the rolling value
 //functions
 
 function add(num1, num2) {
-    let result = num1 + num2;
-    document.getElementById('textBox').value = result;
+    document.getElementById('textBox').value = num1 + num2;
 }
 function subtract(num1, num2) {  
-    let result = num1 - num2;
-    document.getElementById('textBox').value = result;
+    document.getElementById('textBox').value = num1 - num2;
 }
 function multiply(num1, num2) {      
-    let result = num1 * num2;
-    document.getElementById('textBox').value = result;
+    document.getElementById('textBox').value = num1 * num2;
 }
 function divide(num1, num2) {
-    let result = num1 / num2
-    document.getElementById('textBox').value = result;
+    document.getElementById('textBox').value = num1 / num2;
 }
-function percentage(opNum) {
-     
+function percentage(num1) {
+    document.getElementById('textBox').value = num1 / 100;
 }
-function fraction (opNum) {
-      
+function negate (num1) {
+    document.getElementById('textBox').value = '-' + num1;
 }
 function operator() {
     if (operatorInUse == '+') {
@@ -46,6 +42,10 @@ function eventHandler(valClicked) { // changes value shown on display
     var displayVal = document.getElementById('textBox').value;
         if (displayVal.includes('.') == true && valClicked == '.') {
             alert('Only one decimal at a time');
+        } else if (valClicked == '%') {
+            percentage(document.getElementById('textBox').value);
+        } else if (valClicked == '+/-') {
+            negate(document.getElementById('textBox').value);
         } else if ((displayVal == 0 && valClicked == '.') || (valClicked == '.') && (displayVal == '+' || displayVal == '-' || displayVal == '÷' || displayVal == 'x' || displayVal == '%' || displayVal == '+/-')) {
             document.getElementById('textBox').value = '0.';
         } else if (((displayVal == 0) && (displayVal.includes('.') == false))|| valClicked == '+' || valClicked == '-' || valClicked == '÷' || valClicked == 'x' || valClicked == '%' || valClicked == '+/-') {
@@ -88,6 +88,7 @@ document.getElementById('multiply').addEventListener('click', eventHandler('x'))
 document.getElementById('divide').addEventListener('click', eventHandler('÷'));
 document.getElementById('percentage').addEventListener('click', eventHandler('%'));
 document.getElementById('fraction').addEventListener('click', eventHandler('+/-'));
+document.getElementById('decimal').addEventListener('click', eventHandler('.'));
 document.getElementById('equals').addEventListener('click', eventHandler('='));
 //reset listener
 document.getElementById('ac').addEventListener('click', () => {
@@ -96,12 +97,10 @@ document.getElementById('ac').addEventListener('click', () => {
     opNum = 0;
 })
 
-//decimal listener
-document.getElementById('decimal').addEventListener('click', eventHandler('.'));
+
+
 
 
 /*
 
-
-make it so percentage and fraction works
 make it so you can use keyboard to calcuate*/
