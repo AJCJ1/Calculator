@@ -3,9 +3,7 @@ var opNum = null; // the value chosen to interact w rolling value
 var operatorInUse = null; // the operator to use when running operate
 var isSecondCalculation = false; // when true, doesn't replace
 var tallyVal = null; // This is the rolling value
-
 //functions
-
 function add(num1, num2) {
     document.getElementById('textBox').value = num1 + num2;
 }
@@ -65,9 +63,6 @@ function eventHandler(valClicked) { // changes value shown on display
         }
     }
 }
-
-
-
 document.getElementById('zero').addEventListener('click', eventHandler(0));
 document.getElementById(1).addEventListener('click', eventHandler(1));
 document.getElementById(2).addEventListener('click', eventHandler(2));
@@ -78,9 +73,6 @@ document.getElementById(6).addEventListener('click', eventHandler(6));
 document.getElementById(7).addEventListener('click', eventHandler(7));
 document.getElementById(8).addEventListener('click', eventHandler(8));
 document.getElementById(9).addEventListener('click', eventHandler(9));
-
-
-
 //calculator listeners
 document.getElementById('add').addEventListener('click', eventHandler('+'));
 document.getElementById('subtract').addEventListener('click', eventHandler('-'));
@@ -95,12 +87,4 @@ document.getElementById('ac').addEventListener('click', () => {
     document.getElementById('textBox').value = 0;
     tallyNum = 0;
     opNum = 0;
-})
-
-
-
-
-
-/*
-
-make it so you can use keyboard to calcuate*/
+});
