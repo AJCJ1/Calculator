@@ -4,21 +4,27 @@ var numberChosen = null;
 
 
 //functions
-function add(numTally, numToAdd) {
+function add(currentValue, numToAdd) {
     document.getElementById('textBox').value = '+';
-    numTally += numToAdd;
+    currentValue += numToAdd;
 }
-function subtract(numTally, numToRemove) {
+function subtract(currentValue, numToRemove) {
     document.getElementById('textBox').value = '-';
-    numTally -= numToRemove;
+    currentValue -= numToRemove;
 }
-function multiply(numTally, numToMultiply) {
+function multiply(currentValue, numToMultiply) {
     document.getElementById('textBox').value = 'x';
-    numTally *= numToMultiply;
+    currentValue *= numToMultiply;
 }
-function divide(numTally, numToDivide) {
+function divide(currentValue, numToDivide) {
     document.getElementById('textBox').value = '÷';
-    numTally /= numToDivide;
+    currentValue /= numToDivide;
+}
+function percentage(currentValue) {
+document.getElementById('textBox').value = '%';
+}
+function fraction (currentValue) {
+document.getElementById('textBox').value = '+/-';
 }
 function operator(operator, num1, num2) {
     if (operator == '+') {
@@ -33,7 +39,8 @@ function operator(operator, num1, num2) {
 }
 function eventHandler(num) {
     return function display() {
-        if (document.getElementById('textBox').value == 0) {
+        var displayVal = document.getElementById('textBox').value;
+        if (displayVal == 0 || displayVal == '+' || displayVal == '-' || displayVal == '÷' || displayVal == 'x' || displayVal == '%' || displayVal == '+/-') {
             document.getElementById('textBox').value = num;
             currentValue = num;
         } else {
@@ -63,6 +70,8 @@ document.getElementById('add').addEventListener('click', add);
 document.getElementById('subtract').addEventListener('click', subtract);
 document.getElementById('multiply').addEventListener('click', multiply);
 document.getElementById('divide').addEventListener('click', divide);
+document.getElementById('percentage').addEventListener('click', percentage);
+document.getElementById('fraction').addEventListener('click', fraction);
 
 //reset listener
 document.getElementById('ac').addEventListener('click', () => {
